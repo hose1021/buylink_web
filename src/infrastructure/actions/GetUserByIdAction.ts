@@ -1,4 +1,4 @@
-import {UserModel} from "@/domain/models/UserModel";
+import {UserModel} from "@/models/UserModel";
 import {UserServiceInterface} from "@/infrastructure/services/contracts/UserServiceInterface";
 
 export class GetUserByIdAction {

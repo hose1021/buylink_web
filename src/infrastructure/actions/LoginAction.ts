@@ -1,5 +1,5 @@
 import {UserServiceInterface} from "@/infrastructure/services/contracts/UserServiceInterface";
-import {AuthModel} from "@/domain/models/AuthModel";
+import {AuthModel} from "@/models/AuthModel";
 
 export class LoginAction {
 	constructor(private userService: UserServiceInterface) {

@@ -1,6 +1,6 @@
 import {GetServerSidePropsContext} from 'next';
 import {UserController} from "@/infrastructure/controllers/UserController";
-import {UserModel} from "@/domain/models/UserModel";
+import {UserModel} from "@/models/UserModel";
 
 const userController = new UserController();
 
