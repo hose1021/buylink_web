@@ -1,13 +1,15 @@
-import {UserApi} from "@/infrastructure/api/UserApi";
-import {UserRepository} from "@/infrastructure/repositories/UserRepository";
-import {GetUserByIdAction} from "@/usecases/GetUserByIdAction";
+import {GetUserByIdAction} from "@/infrastructure/actions/GetUserByIdAction";
+import {LoginAction} from "@/infrastructure/actions/LoginAction";
 
-const userApi = new UserApi();
-const userRepository = new UserRepository(userApi);
-const getUserById = new GetUserByIdAction(userRepository);
+let getUserByIdAction: GetUserByIdAction;
+let loginAction: LoginAction;
 
 export class UserController {
-	async getUser(id: string) {
-		return await getUserById.execute(id);
+	async getUserById(id: string) {
+		return await getUserByIdAction.execute(id);
+	}
+
+	async login(email: string, password: string) {
+		return await loginAction.execute(email, password);
 	}
 }

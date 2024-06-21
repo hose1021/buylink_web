@@ -6,7 +6,7 @@ const userController = new UserController();
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const id = context.params?.id as string;
-	const user = await userController.getUser(id);
+	const user = await userController.getUserById(id);
 	return {
 		props: {user},
 	};
