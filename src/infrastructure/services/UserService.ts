@@ -1,5 +1,5 @@
-import {UserModel} from "@/models/UserModel";
-import {AuthModel} from "@/models/AuthModel";
+import {UserModel} from "@/infrastructure/models/UserModel";
+import {AuthModel} from "@/infrastructure/models/AuthModel";
 import {UserServiceInterface} from "@/infrastructure/services/contracts/UserServiceInterface";
 import {UserRepositoryInterface} from "@/infrastructure/repositories/contracts/UserRepositoryInterface";
 

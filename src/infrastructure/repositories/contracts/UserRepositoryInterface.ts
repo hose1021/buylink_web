@@ -1,5 +1,5 @@
-import {UserModel} from "@/models/UserModel";
-import {AuthModel} from "@/models/AuthModel";
+import {UserModel} from "@/infrastructure/models/UserModel";
+import {AuthModel} from "@/infrastructure/models/AuthModel";
 
 export interface UserRepositoryInterface {
 	getUserById(id: string, auth?: boolean): Promise<UserModel>;
