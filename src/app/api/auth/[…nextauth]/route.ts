@@ -26,6 +26,7 @@ export const authOptions: NextAuthOptions = {
 
 				for (const cookie of cookies!) {
 					if (cookie.startsWith("laravel_session=")) {
+						``
 						sessionKey = cookie.split("=")[1]
 					} else if (cookie.startsWith("XSRF-TOKEN=")) {
 						xsrfToken = cookie.split("=")[1]

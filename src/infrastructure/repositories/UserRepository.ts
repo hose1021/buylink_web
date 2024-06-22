@@ -1,39 +1,31 @@
 import {UserModel} from "@/infrastructure/models/UserModel";
 import {AuthModel} from "@/infrastructure/models/AuthModel";
 import {UserRepositoryInterface} from "@/infrastructure/repositories/contracts/UserRepositoryInterface";
-import {ApiServiceInterface} from "@/infrastructure/services/contracts/ApiServiceInterface";
-import {ApiService} from "@/infrastructure/services/ApiService";
+import api from "@/utils/api";
 
 export class UserRepository implements UserRepositoryInterface {
-	private apiService: ApiServiceInterface;
-
 	constructor() {
-		this.apiService = new ApiService().create();
 	}
 
 	async getUserById(id: string, auth = true): Promise<UserModel> {
-		const response = await this.apiService.get(`users/${id}`, auth);
-		return await response.json();
+		return await api.get<UserModel>(`users/${id}`, auth);
 	}
 
 	async login(email: string, password: string): Promise<AuthModel> {
-		const response = await this.apiService.post('/login', {email, password});
-		return response.data;
+		return await api.post<AuthModel>('/login', {email, password});
 	}
 
 	async register(email: string, password: string): Promise<AuthModel> {
-		const response = await this.apiService.post('/register', {email, password});
-		return response.data;
+		return await api.post('/register', {email, password});
 	}
 
 	async logout(): Promise<void> {
-		await this.apiService.post('logout', {}, true);
+		await api.post('logout', {}, true);
 	}
 
 	async getUser(): Promise<UserModel | null> {
 		try {
-			const response = await this.apiService.get('user');
-			return response.data;
+			return await api.get<UserModel>('user');
 		} catch (error) {
 			return null;
 		}

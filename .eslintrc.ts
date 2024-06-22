@@ -2,7 +2,7 @@
 module.exports = function (workspaceDirPath: any) {
 	return {
 		root: true,
-		extends: ["next"],
+		extends: ["next", "next/core-web-vitals", "eslint:recommended"],
 		plugins: ["simple-import-sort", "@typescript-eslint"],
 		ignorePatterns: ["dist/", "playwright-report/"],
 		globals: {
