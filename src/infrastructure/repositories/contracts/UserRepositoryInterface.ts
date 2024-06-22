@@ -6,6 +6,8 @@ export interface UserRepositoryInterface {
 
 	login(email: string, password: string): Promise<AuthModel>;
 
+	register(email: string, password: string): Promise<AuthModel>;
+
 	logout(): Promise<void>;
 
 	getUser(): Promise<UserModel | null>;

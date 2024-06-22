@@ -2,12 +2,13 @@ import {UserModel} from "@/infrastructure/models/UserModel";
 import {AuthModel} from "@/infrastructure/models/AuthModel";
 import {UserRepositoryInterface} from "@/infrastructure/repositories/contracts/UserRepositoryInterface";
 import {ApiServiceInterface} from "@/infrastructure/services/contracts/ApiServiceInterface";
+import {ApiService} from "@/infrastructure/services/ApiService";
 
 export class UserRepository implements UserRepositoryInterface {
 	private apiService: ApiServiceInterface;
 
-	constructor(apiService: ApiServiceInterface) {
-		this.apiService = apiService.create();
+	constructor() {
+		this.apiService = new ApiService().create();
 	}
 
 	async getUserById(id: string, auth = true): Promise<UserModel> {
@@ -17,6 +18,11 @@ export class UserRepository implements UserRepositoryInterface {
 
 	async login(email: string, password: string): Promise<AuthModel> {
 		const response = await this.apiService.post('/login', {email, password});
+		return response.data;
+	}
+
+	async register(email: string, password: string): Promise<AuthModel> {
+		const response = await this.apiService.post('/register', {email, password});
 		return response.data;
 	}
 

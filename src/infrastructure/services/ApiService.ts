@@ -14,6 +14,8 @@ export class ApiService implements ApiServiceInterface {
 				Authorization: `Bearer ${token}`,
 			},
 		});
+
+		this.axiosInstance.defaults.headers['Authorization'] = `Bearer ${token}`;
 	}
 
 	public create(context?: GetServerSidePropsContext): ApiService {

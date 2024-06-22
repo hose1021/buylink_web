@@ -6,7 +6,7 @@ import {UserController} from "@/infrastructure/controllers/UserController";
 
 const userController = new UserController();
 
-const LoginPage = () => {
+const RegisterPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
@@ -17,7 +17,7 @@ const LoginPage = () => {
 		console.log(userController)
 		try {
 			try {
-				await userController.login(email, password);
+				await userController.register(email, password);
 			} catch (error) {
 				console.error(error)
 			}
@@ -29,7 +29,7 @@ const LoginPage = () => {
 
 	return (
 		<div>
-			<h1>Login</h1>
+			<h1>Register</h1>
 			<form onSubmit={handleSubmit}>
 				<div>
 					<label>Email:</label>
@@ -40,10 +40,10 @@ const LoginPage = () => {
 					<input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
 				</div>
 				{error && <p>{error}</p>}
-				<button type="submit">Login</button>
+				<button type="submit">Register</button>
 			</form>
 		</div>
 	);
 };
 
-export default LoginPage;
+export default RegisterPage;
